@@ -21,3 +21,12 @@
 ## Thoughts
 - characters should be of a class
 - gameplay can still be an object
+
+## Profile for fighters
+Barbarian - High health high damage low scaling (increase damage when below half health)
+Wizard - low health low damage high scaling (Heals self on enemy defeat)
+rogue - low health high attack med scaling (extra attack at start of combat)
+ranger - high health high damage med scaling (Has wolf which is attacked first, loses attack & counter when the wolf dies)
+
+
+Art taken from https://www.artstation.com/jpbalmet

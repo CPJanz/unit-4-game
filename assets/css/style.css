@@ -1,0 +1,14 @@
+.side-tab {
+    border-radius: 0 10px 10px 0;
+    text-align: left;
+}
+
+.card-img-top,
+.my-card {
+    max-width: 400px;
+}
+
+.my-card {
+    background-image: url(../images/wizard.jpg);
+    height: 500px;
+}
