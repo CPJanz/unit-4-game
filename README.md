@@ -30,3 +30,11 @@ ranger - high health high damage med scaling (Has wolf which is attacked first, 
 
 
 Art taken from https://www.artstation.com/jpbalmet
+
+<i class="fas fa-skull"></i>
+
+
+TODO: construct game states
+TODO: Style dead characters
+TODO: Handle Game Over state
+TODO: Update readme

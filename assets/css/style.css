@@ -1,14 +1,38 @@
-.side-tab {
+.my-card-side-tab {
     border-radius: 0 10px 10px 0;
     text-align: left;
+    margin-top: 3px;
+    color: black;
+    background-color: white;
 }
 
-.card-img-top,
-.my-card {
-    max-width: 400px;
+.my-card-side-tab-container {
+    padding-top: 8px;
 }
 
 .my-card {
-    background-image: url(../images/wizard.jpg);
-    height: 500px;
+    width: 300px;
+    max-width: 300px;
+    margin: 5px;
+}
+
+.my-card {
+    height: 375px;
+    border: 5px solid rgb(109, 29, 29);
+    border-radius: 5px;
+}
+
+.my-card-img-spacer {
+    height: 220px;
+}
+
+.my-card-text-container {
+    background-color: rgb(109, 29, 29);
+    opacity: .85;
+    color: white;
+    height: 100px;
+}
+
+span {
+    padding: 5px;
 }

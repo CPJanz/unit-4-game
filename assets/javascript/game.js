@@ -13,20 +13,24 @@ class fighter {
     constructor(name) {
         this.name = name;
         this.characterClass = "fighter";
-        this.attack = BASE_ATTACK;
-        this.counter = BASE_COUNTER;
-        this.levelUpValue = BASE_LEVEL_UP_VALUE;
-        this.health = this.startingHealth = BASE_HEALTH;
+        this.attack = Math.floor(BASE_ATTACK);
+        this.counter = Math.floor(BASE_COUNTER);
+        this.levelUpValue = Math.floor(BASE_LEVEL_UP_VALUE);
+        this.health = this.startingHealth = Math.floor(BASE_HEALTH);
+        this.text = "The basic combatant. Basically just a well equipped villager.";
+        this.imageLink = "assets/images/wizard.jpg";
     }
 
     // Decrements health by damage taken, returns a bool stating whether a player is alive (true) or not (false).
     takeDamage(damage) {
         this.health -= damage;
+        $("#" + this.characterClass + "-health").replaceWith($("<span id='" + this.characterClass + "-health'>" + this.health + "<span>"));
         return this.health > 0;
     }
 
     levelUp() {
         this.attack += this.levelUpValue;
+        $("#" + this.characterClass + "-attack").replaceWith($("<span id='" + this.characterClass + "-attack'>" + this.attack + "<span>"));
     }
 
     // Processes a fight and returns an array of combatants living status'.
@@ -53,13 +57,16 @@ class barbarian extends fighter {
     constructor(name) {
         super(name);
         this.characterClass = "barbarian";
-        this.health = this.startingHealth = BASE_HEALTH * 2;
-        this.attack = BASE_ATTACK * 1.25;
-        this.counter = BASE_COUNTER * 1.25;
+        this.imageLink = "assets/images/barbarian.jpg";
+        this.health = this.startingHealth = Math.floor(BASE_HEALTH * 2);
+        this.attack = Math.floor(BASE_ATTACK * 1.25);
+        this.counter = Math.floor(BASE_COUNTER * 1.25);
+        this.text = "A hardy warrior whose gains increase the lower her health is."
     }
 
     levelUp() {
         this.attack = Math.floor(this.attack * this.startingHealth / this.health);
+        $("#" + this.characterClass + "-attack").replaceWith($("<span id='" + this.characterClass + "-attack'>" + this.attack + "<span>"));
     }
 }
 
@@ -67,14 +74,17 @@ class barbarian extends fighter {
 class wizard extends fighter {
     constructor(name) {
         super(name);
-        this.health = this.startingHealth = BASE_HEALTH * .75;
-        this.attack = BASE_ATTACK * .5;
-        this.counter = BASE_COUNTER * .5;
         this.characterClass = "wizard";
+        this.imageLink = "assets/images/wizard.jpg";
+        this.health = this.startingHealth = Math.floor(BASE_HEALTH * 1);
+        this.attack = Math.floor(BASE_ATTACK * .75);
+        this.counter = Math.floor(BASE_COUNTER * .75);
+        this.text = "Frail but a fast learner. Heals herself at the end of combat.";
     }
 
     levelUp() {
-        this.attack = Math.floor(this.attack * 1.25);
+        this.attack = Math.floor(this.attack * 1.5);
+        $("#" + this.characterClass + "-attack").replaceWith($("<span id='" + this.characterClass + "-attack'>" + this.attack + "<span>"));
     }
 }
 
@@ -83,12 +93,12 @@ class wizard extends fighter {
 class rogue extends fighter {
     constructor(name) {
         super(name);
-        console.log("pre-update", this.characterClass);
         this.characterClass = "rogue";
-        console.log("post-update", this.characterClass);
-        this.health = this.startingHealth = BASE_HEALTH * .75;
-        this.attack = BASE_ATTACK * 1.5;
-        this.counter = BASE_COUNTER * 1.5;
+        this.imageLink = "assets/images/rogue.jpg";
+        this.health = this.startingHealth = Math.floor(BASE_HEALTH * .75);
+        this.attack = Math.floor(BASE_ATTACK * 1.5);
+        this.counter = Math.floor(BASE_COUNTER * 1.5);
+        this.text = "Ambushes the opponent at the beginning of combat";
     }
 }
 
@@ -97,18 +107,21 @@ class rogue extends fighter {
 class ranger extends fighter {
     constructor(name) {
         super(name);
-        this.wolfHealth = BASE_HEALTH * .75;
-        this.wolfAttack = BASE_ATTACK * .5;
-        this.wolfCounter = BASE_COUNTER * .5;
-        this.health = this.startingHealth = BASE_HEALTH * .75;
+        this.characterClass = "ranger";
+        this.imageLink = "assets/images/ranger.jpg";
+        this.wolfHealth = Math.floor(BASE_HEALTH * .75);
+        this.wolfAttack = Math.floor(BASE_ATTACK * .5);
+        this.wolfCounter = Math.floor(BASE_COUNTER * .5);
+        this.health = this.startingHealth = Math.floor(BASE_HEALTH * .75);
         this.attack = BASE_ATTACK * 1 + this.wolfAttack;
         this.counter = BASE_COUNTER * 1 + this.wolfCounter;
-        this.class = "ranger";
+        this.text = "Has a wolf friend who distracts opponents and aids in combat.";
     }
 
     takeDamage(damage) {
         if (this.wolfHealth > 0) {
             this.wolfHealth -= damage;
+            $("#" + this.characterClass + "-health").replaceWith($("<span id='" + this.characterClass + "-health'>" + this.health + "<span>"));
             return true
         } else {
             this.attack -= this.wolfAttack;
@@ -152,14 +165,18 @@ function createfighter(characterClass, characterName) {
         default:
             character = new fighter(characterName);
     }
-    let button = $('<div class="col border mx-2" id="' + characterClass + '-button">' + characterClass + '</div>');
+    // This mess constructs a character card
+    let button = $('<div class="col my-card" style="background-image:url(' + character.imageLink + ')"><div class="row"><div class="col my-card-title"><h2 class="my-card-title-text">' + character.characterClass + '</h2></div></div><div class="row my-card-img-spacer"></div><div class="row my-card-text-container"><div class="col-4 my-card-side-tab-container"><div class="row"><div class="col border my-card-side-tab"><i class="fas fa-fist-raised"></i><span class="attack-span" id="' + character.characterClass + '-attack">' + character.attack + '</span></div></div><div class="row"><div class="col border my-card-side-tab"><i class="fas fa-undo"></i><span class="counter-span" id="' + character.characterClass + '-counter">' + character.counter + '</span></div></div><div class="row"><div class="col border my-card-side-tab"><i class="fas fa-heart"></i><span class="health-span" id="' + character.characterClass + '-health">' + character.health + '</span></div></div></div><div class="col-8"><span class="my-card-class-text">' + character.text + '</span></div></div></div>')
+
     button.click(function() {
         if (playerCharacter === undefined) {
             playerCharacter = character;
             $("#player-div").append(button.detach());
+            fighterCount--;
         } else if (opponent === undefined) {
             opponent = character;
             $("#opponent-div").append(button.detach());
+            fighterCount--;
             startCombat();
         }
     })
@@ -171,31 +188,32 @@ function startCombat() {
     if (playerCharacter.characterClass === "rogue") {
         opponent.takeDamage(playerCharacter.attack);
         console.log("sneak attack!");
+        playerCharacter.levelUp();
     }
     if (opponent.characterClass === "rogue") {
         playerCharacter.takeDamage(opponent.counter);
         console.log("opponent done sneaked!");
     }
-    //show fight button
 }
 
 $("#fight-button").click(function() {
     if (playerCharacter != undefined && opponent != undefined) {
         let boutResult = playerCharacter.bout(opponent);
-        console.log("a bout!", boutResult);
-        console.log("pool", fighterCount);
         if (boutResult[0] === false) {
             console.log("game over!");
             //end game
         } else if (boutResult[1] === false) {
+            if (playerCharacter.characterClass === "wizard") {
+                playerCharacter.health = Math.min(playerCharacter.health + playerCharacter.attack, playerCharacter.startingHealth);
+            }
             opponent = undefined;
-            $("#opponent-div>div").remove();
-            console.log($("#character-pool>div"));
-            if ($("#character-pool>div").length === 0) {
+            console.log($("#opponent-div>div"));
+            $("#character-pool").append($("#opponent-div>div").detach());
+            if (fighterCount === 0) {
                 console.log("You win!");
             }
         }
-
+        playerCharacter.levelUp();
     }
 });
 
