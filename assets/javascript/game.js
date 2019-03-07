@@ -2,7 +2,7 @@
 const BASE_HEALTH = 100;
 const BASE_ATTACK = 10;
 const BASE_COUNTER = 10;
-const BASE_LEVEL_UP_VALUE = 5;
+const BASE_LEVEL_UP_VALUE = 10;
 let playerCharacter = undefined;
 let opponent = undefined;
 let fighterCount = 0;
@@ -85,7 +85,7 @@ class wizard extends fighter {
         this.characterClass = "wizard";
         this.imageLink = "assets/images/wizard.jpg";
         this.health = this.startingHealth = Math.floor(BASE_HEALTH * 1);
-        this.attack = Math.floor(BASE_ATTACK * .75);
+        this.attack = Math.floor(BASE_ATTACK * 1);
         this.counter = Math.floor(BASE_COUNTER * .75);
         this.text = "Frail but a fast learner. Heals herself at the end of combat.";
     }
