@@ -1,40 +1,19 @@
 # unit-4-game
+Welcome to the arena! chose a champion and do battle against foes. Choose carefully, as your life depends on defeating them all. 
 
-## Game States
-0. Setup game.
-    1. create fighters
-    2. create HTML objects
-    3. assign fighters to their objects
-1. Waiting To Start
-2. Player Taps on a character
-3. Game Starts in state with no enemy
-4. Player Taps on a character to battle
-5. Enemy is selected
-6. Player takes turn (Player deals attack to enemy, enemy does counter-attack damage to player).
-7. Player attack is increased.
-8. Check for battle end.
-    1. Player health <= 0 == game over
-    2. Enemy health <= 0 == Battle Won
-9. If battle continues GOTO 6.
-10. If battle is over and was won, GOTO 4. 
+## Description of Play
+The player choses one of 4 characters to be their champion. Each character has a special ability, listed on their card. The player then chooses their first opponent and they battle until one of them is defeated. If the player won, they continue on choosing new opponents until they have none left or are defeated themselves.
 
-## Thoughts
-- characters should be of a class
-- gameplay can still be an object
+## Purpose
+This was an assignment for coding bootcamp focusing on jquery DOM manipulation. I added the use of classes and more complex bootstrap objects.
 
-## Profile for fighters
-Barbarian - High health high damage low scaling (increase damage when below half health)
-Wizard - low health low damage high scaling (Heals self on enemy defeat)
-rogue - low health high attack med scaling (extra attack at start of combat)
-ranger - high health high damage med scaling (Has wolf which is attacked first, loses attack & counter when the wolf dies)
+## Potential Future Updates
+- Fancy animations when doing battle (health numbers flashing or cards shaking).
+- display an image of the chosen pokemon when it is guessed (much like the cartoon).
+- better surrounding design (I was happy with the cards but not the rest.
+- Better responsivenes (the cards are fragile to screen size changes).
 
+## Feedback
+Bootstrap is getting easier to use. I found changing the html of jquery generated objects fiddly at times. I often had to fall back to re creating the object to get the changes I wanted displayed.
 
-Art taken from https://www.artstation.com/jpbalmet
-
-<i class="fas fa-skull"></i>
-
-
-TODO: construct game states
-TODO: Style dead characters
-TODO: Handle Game Over state
-TODO: Update readme
+I welcome any feedback on the choices I made (especially on the html and css side).

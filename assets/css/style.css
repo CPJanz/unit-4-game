@@ -1,3 +1,9 @@
+h1,
+h2,
+h3 {
+    margin: auto;
+}
+
 .my-card-side-tab {
     border-radius: 0 10px 10px 0;
     text-align: left;
@@ -14,6 +20,7 @@
     width: 300px;
     max-width: 300px;
     margin: 5px;
+    visibility: inherit;
 }
 
 .my-card {
@@ -23,16 +30,73 @@
 }
 
 .my-card-img-spacer {
-    height: 220px;
+    height: 210px;
 }
 
 .my-card-text-container {
     background-color: rgb(109, 29, 29);
     opacity: .85;
     color: white;
-    height: 100px;
+    height: 120px;
+}
+
+.big-skull {
+    font-size: 150px;
+    color: rgb(109, 29, 29);
+    opacity: .85;
 }
 
 span {
     padding: 5px;
+}
+
+#player-character-col {
+    visibility: hidden;
+}
+
+#opponent-character-col {
+    visibility: hidden;
+}
+
+#fight-controls {
+    visibility: hidden;
+}
+
+#combat-log {
+    padding-top: 100px;
+    height: 250px;
+    background-color: tan;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+#win-text {
+    font-size: 75px;
+    color: darkgreen;
+}
+
+#lose-text {
+    font-size: 75px;
+    color: rgb(109, 29, 29);
+}
+
+#player-character-col {
+    background-color: darkgreen;
+    color: white;
+    border-radius: 5px;
+}
+
+#opponent-character-col {
+    background-color: rgb(109, 29, 29);
+    color: white;
+    border-radius: 5px;
+}
+
+#character-pool-col {
+    background-color: tan;
+    border-radius: 5px;
+}
+
+.my-card-title-text {
+    color: black;
 }
